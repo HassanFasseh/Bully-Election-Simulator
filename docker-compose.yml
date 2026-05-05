@@ -1,0 +1,88 @@
+x-node-common: &node-common
+  build:
+    context: ./node
+  restart: unless-stopped
+  networks:
+    - bully-net
+  environment:
+    ALL_NODES: "1,2,3,4,5"
+    HEARTBEAT_INTERVAL: "3"
+    REQUEST_TIMEOUT: "2"
+    MAX_LATENCY_MS: "150"
+    PORT: "5000"
+
+services:
+  node1:
+    <<: *node-common
+    container_name: bully-node1
+    hostname: node1
+    environment:
+      NODE_ID: "1"
+      ALL_NODES: "1,2,3,4,5"
+      HEARTBEAT_INTERVAL: "3"
+      REQUEST_TIMEOUT: "2"
+      MAX_LATENCY_MS: "150"
+
+  node2:
+    <<: *node-common
+    container_name: bully-node2
+    hostname: node2
+    environment:
+      NODE_ID: "2"
+      ALL_NODES: "1,2,3,4,5"
+      HEARTBEAT_INTERVAL: "3"
+      REQUEST_TIMEOUT: "2"
+      MAX_LATENCY_MS: "150"
+
+  node3:
+    <<: *node-common
+    container_name: bully-node3
+    hostname: node3
+    environment:
+      NODE_ID: "3"
+      ALL_NODES: "1,2,3,4,5"
+      HEARTBEAT_INTERVAL: "3"
+      REQUEST_TIMEOUT: "2"
+      MAX_LATENCY_MS: "150"
+
+  node4:
+    <<: *node-common
+    container_name: bully-node4
+    hostname: node4
+    environment:
+      NODE_ID: "4"
+      ALL_NODES: "1,2,3,4,5"
+      HEARTBEAT_INTERVAL: "3"
+      REQUEST_TIMEOUT: "2"
+      MAX_LATENCY_MS: "150"
+
+  node5:
+    <<: *node-common
+    container_name: bully-node5
+    hostname: node5
+    environment:
+      NODE_ID: "5"
+      ALL_NODES: "1,2,3,4,5"
+      HEARTBEAT_INTERVAL: "3"
+      REQUEST_TIMEOUT: "2"
+      MAX_LATENCY_MS: "150"
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: bully-frontend
+    ports:
+      - "3000:3000"
+    networks:
+      - bully-net
+    depends_on:
+      - node1
+      - node2
+      - node3
+      - node4
+      - node5
+    restart: unless-stopped
+
+networks:
+  bully-net:
+    driver: bridge
