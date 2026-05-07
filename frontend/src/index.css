@@ -1,0 +1,60 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #080c10;
+  --surface:   #0d1520;
+  --surface2:  #111c2d;
+  --border:    #1e3a5f;
+  --border2:   #2a4a7a;
+  --text:      #c8d8ea;
+  --text-dim:  #5c7a99;
+  --text-faint:#2a3d52;
+  --accent:    #00d4ff;
+  --accent2:   #0099cc;
+  --leader:    #ffd700;
+  --follower:  #3a8fff;
+  --candidate: #ff8c00;
+  --down:      #ff3355;
+  --green:     #00ff88;
+  --font-mono: 'Share Tech Mono', monospace;
+  --font-head: 'Orbitron', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+html, body { height: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.5;
+  overflow: hidden;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+
+button {
+  cursor: pointer;
+  font-family: var(--font-mono);
+  border: none;
+  outline: none;
+}
+
+/* scanline overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.03) 2px,
+    rgba(0,0,0,0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
