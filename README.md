@@ -1,6 +1,6 @@
-![dashboard](docs/dashboard.png)
-
 # BULLY: Distributed Leader Election Simulator
+
+![dashboard](docs/dashboard.png)
 
 BULLY is an interactive simulator of the Bully algorithm for distributed leader
 election. It runs a cluster of five independent nodes in Docker, each a small
