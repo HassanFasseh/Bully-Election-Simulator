@@ -201,13 +201,6 @@ frontend/
 docker-compose.yml   five node services plus the frontend
 ```
 
-## Screenshot
-
-The image at the top of this file is expected at `docs/dashboard.png`. The
-`docs/` folder already exists; save your screenshot there as `dashboard.png`. A
-short screen recording exported as a GIF works too; use the same path or update
-the link.
-
 ## License
 
 MIT, see [LICENSE](LICENSE). Copyright 2026 Hassan Fasseh and Nada Sadraoui.
